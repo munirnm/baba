@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Finder</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: #333;
+            color: #fff;
+            background: url('bbe.jpg') no-repeat center center/cover;
+        }
+
+        header {
+            color: #fff;
+            background: url('header.jpg') no-repeat center center/cover;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .wc {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        section {
+            padding: 60px 20px;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .car {
+            background-color:  rgb(42, 37, 30);
+            color: #fff;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            max-width: calc(25% - 40px); 
+            box-sizing: border-box;
+            transition: transform 0.3s ease; 
+        }
+
+        .car img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Filter options */
+        .filter-options {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .filter-options label {
+            margin-right: 20px;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #4c4a4e;
+            transition: background-color 0.3s ease;
+        }
+
+        .filter-options label:hover {
+            background-color: #9a0505;
+        }
+
+        .filter-options input[type="radio"] {
+            display: none;
+        }
+
+        .filter-options input[type="radio"]:checked + label {
+            background-color: #9a0505;
+        }
+
+        .cars-container {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="wc">
+        <h1>Car Finder</h1>
+        <p>Find your perfect car</p>
+    </div>
+</header>
+
+<section class="cars-section">
+    <div class="filter-options">
+        <input type="radio" id="all" name="filter" value="all" checked>
+        <label for="all">All</label>
+
+        <input type="radio" id="comfort" name="filter" value="comfort">
+        <label for="comfort">Comfort</label>
+
+        <input type="radio" id="sport" name="filter" value="sport">
+        <label for="sport">Sport</label>
+
+        <input type="radio" id="luxury" name="filter" value="luxury">
+        <label for="luxury">Luxury</label>
+    </div>
+
+    <div class="cars-container" id="comfort-cars">
+        <div class="car">
+            <h3>Comfort Car 1</h3>
+            <img src="bn.jpg" alt="Comfort Car 1">
+            <p>Description of Comfort Car 1.</p>
+        </div>
+
+        <div class="car">
+            <h3>Comfort Car 2</h3>
+            <img src="bn.jpg" alt="Comfort Car 2">
+            <p>Description of Comfort Car 2.</p>
+        </div>
+
+        <div class="car">
+            <h3>Comfort Car 3</h3>
+            <img src="bn.jpg" alt="Comfort Car 3">
+            <p>Description of Comfort Car 3.</p>
+        </div>
+
+        <div class="car">
+            <h3>Comfort Car 4</h3>
+            <img src="bn.jpg" alt="Comfort Car 4">
+            <p>Description of Comfort Car 4.</p>
+        </div>
+    </div>
+
+    <div class="cars-container" id="sport-cars">
+        <div class="car">
+            <h3>Sport Car 1</h3>
+            <img src="bmwx.jpg" alt="Sport Car 1">
+            <p>Description of Sport Car 1.</p>
+        </div>
+
+        <div class="car">
+            <h3>Sport Car 2</h3>
+            <img src="bmwx.jpg" alt="Sport Car 2">
+            <p>Description of Sport Car 2.</p>
+        </div>
+
+        <div class="car">
+            <h3>Sport Car 3</h3>
+            <img src="bmwx.jpg" alt="Sport Car 3">
+            <p>Description of Sport Car 3.</p>
+        </div>
+
+        <div class="car">
+            <h3>Sport Car 4</h3>
+            <img src="bmwx.jpg" alt="Sport Car 4">
+            <p>Description of Sport Car 4.</p>
+        </div>
+    </div>
+
+    <div class="cars-container" id="luxury-cars">
+        <div class="car">
+            <h3>Luxury Car 1</h3>
+            <img src="bn.jpg" alt="Luxury Car 1">
+            <p>Description of Luxury Car 1.</p>
+        </div>
+
+        <div class="car">
+            <h3>Luxury Car 2</h3>
+            <img src="bn.jpg" alt="Luxury Car 2">
+            <p>Description of Luxury Car 2.</p>
+        </div>
+
+        <div class="car">
+            <h3>Luxury Car 3</h3>
+            <img src="bn.jpg" alt="Luxury Car 3">
+            <p>Description of Luxury Car 3.</p>
+        </div>
+
+        <div class="car">
+            <h3>Luxury Car 4</h3>
+            <img src="bn.jpg" alt="Luxury Car 4">
+            <p>Description of Luxury Car 4.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('input[type=radio][name=filter]').forEach(function(input) {
+        input.addEventListener('change', function() {
+            var category = this.value;
+            document.querySelectorAll('.cars-container').forEach(function(container) {
+                if (container.id === category + '-cars' || category === 'all') {
+                    container.style.display = 'flex';
+                } else {
+                    container.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

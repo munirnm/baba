@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Recommendation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: url('header.jpg') no-repeat center center/cover;
+            padding: 60px 0;
+            text-align: center;
+            color: #fff;
+        }
+
+        .wc {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            padding: 50px 20px;
+        }
+
+        .recommendation-form {
+            background: #444;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .recommendation-form input,
+        .recommendation-form select,
+        .recommendation-form textarea,
+        .recommendation-form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .recommendation-form button {
+            background-color: #9a0505;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .recommendation-form button:hover {
+            background-color: #d60d0d;
+        }
+
+        .cars-container {
+            display: none;
+            padding: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .car {
+            background-color: rgb(42, 37, 30);
+            color: #fff;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            max-width: calc(25% - 40px); 
+            box-sizing: border-box;
+            transition: transform 0.3s ease; 
+        }
+
+        .car img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="wc">
+        <h1>Car Recommendation</h1>
+        <p>Get a personalized car recommendation</p>
+    </div>
+</header>
+
+<div class="form-container">
+    <form class="recommendation-form" id="recommendationForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <select id="carType" required>
+            <option value="">Select Car Type</option>
+            <option value="Comfort">Comfort</option>
+            <option value="Sport">Sport</option>
+            <option value="Luxury">Luxury</option>
+        </select>
+        <textarea id="comments" placeholder="Additional Comments" rows="4"></textarea>
+        <button type="submit">Get Recommendation</button>
+    </form>
+</div>
+
+<div class="cars-container" id="comfort-cars">
+    <div class="car">
+        <h3>Comfort Car 1</h3>
+        <img src="bn.jpg" alt="Comfort Car 1">
+        <p>Description of Comfort Car 1.</p>
+    </div>
+    <div class="car">
+        <h3>Comfort Car 2</h3>
+        <img src="bn.jpg" alt="Comfort Car 2">
+        <p>Description of Comfort Car 2.</p>
+    </div>
+    <div class="car">
+        <h3>Comfort Car 3</h3>
+        <img src="bn.jpg" alt="Comfort Car 3">
+        <p>Description of Comfort Car 3.</p>
+    </div>
+    <div class="car">
+        <h3>Comfort Car 4</h3>
+        <img src="bn.jpg" alt="Comfort Car 4">
+        <p>Description of Comfort Car 4.</p>
+    </div>
+</div>
+
+<div class="cars-container" id="sport-cars">
+    <div class="car">
+        <h3>Sport Car 1</h3>
+        <img src="bmwx.jpg" alt="Sport Car 1">
+        <p>Description of Sport Car 1.</p>
+    </div>
+    <div class="car">
+        <h3>Sport Car 2</h3>
+        <img src="bmwx.jpg" alt="Sport Car 2">
+        <p>Description of Sport Car 2.</p>
+    </div>
+    <div class="car">
+        <h3>Sport Car 3</h3>
+        <img src="bmwx.jpg" alt="Sport Car 3">
+        <p>Description of Sport Car 3.</p>
+    </div>
+    <div class="car">
+        <h3>Sport Car 4</h3>
+        <img src="bmwx.jpg" alt="Sport Car 4">
+        <p>Description of Sport Car 4.</p>
+    </div>
+</div>
+
+<div class="cars-container" id="luxury-cars">
+    <div class="car">
+        <h3>Luxury Car 1</h3>
+        <img src="bn.jpg" alt="Luxury Car 1">
+        <p>Description of Luxury Car 1.</p>
+    </div>
+    <div class="car">
+        <h3>Luxury Car 2</h3>
+        <img src="bn.jpg" alt="Luxury Car 2">
+        <p>Description of Luxury Car 2.</p>
+    </div>
+    <div class="car">
+        <h3>Luxury Car 3</h3>
+        <img src="bn.jpg" alt="Luxury Car 3">
+        <p>Description of Luxury Car 3.</p>
+    </div>
+    <div class="car">
+        <h3>Luxury Car 4</h3>
+        <img src="bn.jpg" alt="Luxury Car 4">
+        <p>Description of Luxury Car 4.</p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('recommendationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var carType = document.getElementById('carType').value.toLowerCase();
+
+        document.querySelectorAll('.cars-container').forEach(function(container) {
+            container.style.display = 'none';
+        });
+
+        if (carType) {
+            document.getElementById(carType + '-cars').style.display = 'flex';
+        }
+    });
+</script>
+
+</body>
+</html>

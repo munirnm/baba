@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Dealership</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        header {
+            background: url('yo10.jpg') no-repeat center center/cover;
+            padding:100px 0;
+            text-align: center;
+            color: #fff;
+            animation: headerAnimation 3s infinite alternate;
+        }
+
+        @keyframes headerAnimation {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.05);
+            }
+        }
+
+        .wc {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            animation: headerTextAnimation 3s infinite alternate;
+        }
+
+        @keyframes headerTextAnimation {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.05);
+            }
+        }
+
+        h2 {
+            color: #fefcfc;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 0;
+            color: #fbf9f9;
+        }
+
+        .navbar {
+            background-color: #68666a;
+            text-align: center;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .navbar a {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+            border-radius: 5px;
+            background-color: #68666a;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #3a383c;
+        }
+
+        .about-us,
+        .featured-cars,
+        .gallery {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-us {
+            background-color: #1d1b1b;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            padding-top: 100px;
+            text-align: center;
+            padding-bottom: 100px;
+        }
+
+        .bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .featured-cars {
+            background-color: #1f1e20;
+        }
+
+        .bg-image {
+            background-image: url('best.webp');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            border-radius: 10px;
+        }
+
+        .car-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .car {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .car:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .car img {
+            width: 300px;
+            height: auto;
+            object-fit: cover;
+            border-bottom: 2px solid #f5f5f5;
+            transition: transform 0.3s ease;
+        }
+
+        .car:hover img {
+            transform: scale(1.1);
+        }
+
+        .car-content {
+            padding: 20px;
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .car:hover .car-content {
+            transform: translateY(-100%);
+        }
+
+        .gallery-images img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-images img:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-form {
+            background-color: #1d1b1b;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .contact-form form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+
+        input,
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4c4a4e;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            background-color: #9a0505;
+        }
+
+        button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 200px;
+            background-color: #6fb07f;
+            border-radius: 100px;
+            transition: all 0.5s ease;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+        }
+
+        button:hover::after {
+            width: 200px;
+            height: 200px;
+            border-radius: 100px;
+            margin-left: 190px;
+        }
+
+        .footer {
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        #rr {
+            color: #4cd048;
+        }
+
+        @media screen and (max-width: 480px) {
+            header {
+                padding: 30px 0;
+            }
+
+            .navbar a {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+        }
+
+        @media screen and (max-width: 321px) {
+            header {
+                padding: 30px 0;
+            }
+
+            .navbar a {
+                padding: 6px 8px;
+                font-size: 14px;
+            }
+
+            .container {
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
+
+            .contact-form form {
+                padding: 15px;
+            }
+        }
+        @keyframes opacity {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    animation: opacity 2s infinite;
+    color: #16a085; 
+}
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="wc">
+            <h1>Car Dealership</h1>
+            <p>Your Destination for Quality Cars</p>
+        </div>
+    </header>
+
+    <div class="navbar">
+        <a href="#gallery">Cars</a>
+        <a href="all-cars.html" target="_blank">All Cars</a>
+        <a href="order.html" target="_blank">Order</a>
+        <a href="sell.html" target="_blank">Sell</a>
+        <a href="car-finder.html" target="_blank">CarPick</a>
+        <a href="carSearch.html" target="_blank">carSearch</a>
+        <video autoplay muted loop class="bg-video">
+            <source src="hop3.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <section class="about-us">
+        <video autoplay muted loop class="bg-video">
+            <source src="ho.mp4" type="video/mp4">
+        </video>
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Welcome to our car dealership, your premier destination for quality cars. With a passion for excellence, we provide a curated selection of luxury vehicles to meet your discerning taste. Our commitment to customer satisfaction sets us apart, and we invite you to explore our featured cars and experience the epitome of automotive luxury.</p>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <video autoplay muted loop class="bg-video">
+            <source src="hop3.mp4" type="video/mp4">
+        </video>
+        <div class="container">
+            <h2>Car Gallery</h2>
+            <div class="gallery-images">
+                <img src="bn.jpg" alt="BMW 3 Series">
+                <img src="hj.webp" alt="BMW i8">
+                <img src="ol.jpg" alt="BMW Z4">
+                <img src="yo.webp" alt="Car 1">
+                <img src="yo2.webp" alt="Car 2">
+                <img src="yo3.webp" alt="Car 3">
+                <img src="yo.webp" alt="Car 1">
+                <img src="yo2.webp" alt="Car 2">
+                <img src="yo3.webp" alt="Car 3">
+                <img src="yo.webp" alt="Car 1">
+                <img src="yo2.webp" alt="Car 2">
+                <img src="yo3.webp" alt="Car 3">
+                <img src="yo.webp" alt="Car 1">
+                <img src="yo2.webp" alt="Car 2">
+                <img src="yo3.webp" alt="Car 3">
+                <img src="yo.webp" alt="Car 1">
+                <img src="yo2.webp" alt="Car 2">
+                <img src="yo3.webp" alt="Car 3">
+                <!-- Add more images here -->
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-cars" id="cars">
+        <div class="container bg-image">
+            <h2 id="rr">Best Sellers</h2>
+            <div class="car-container">
+                <div class="car">
+                    <img src="bmwx.jpg" alt="BMW X5">
+                    <div class="car-content">
+                        <h3>BMW X5</h3>
+                        <p>Description of the BMW X5</p>
+                    </div>
+                </div>
+                <div class="car">
+                    <img src="m4.jpg" alt="BMW M4">
+                    <div class="car-content">
+                        <h3>BMW M4</h3>
+                        <p>Description of the BMW M4</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-form">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="4" required></textarea>
+                <button type="submit">
+                    <span>Submit</span>
+                    <img src="" alt="">
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p> 2024 Car dealership. All rights reserved.</p>
+        </div>
+        <video autoplay muted loop class="bg-video">
+            <source src="hop3.mp4" type="video/mp4">
+        </video>
+    </footer>
+
+</body>
+
+</html>
